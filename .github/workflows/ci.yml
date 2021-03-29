@@ -23,3 +23,5 @@ jobs:
         # https://github.com/reviewdog/errorformat/blob/master/fmts/scala.go
         echo log.txt | reviewdog -reporter=github-pr-review -f=sbt-scalastyle
         echo log.txt | reviewdog -reporter=github-check -f=sbt-scalastyle
+        echo log.txt | reviewdog -reporter=github-pr-review -f=sbt
+        echo log.txt | reviewdog -reporter=github-check -f=sbt
