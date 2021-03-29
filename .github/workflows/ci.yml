@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: olafurpg/setup-scala@v10
+      with:
+        java-version: "8"
+    - uses: actions/checkout@v2.3.4
+    - uses: coursier/cache-action@v6
+    - uses: reviewdog/action-setup@ae87162d7ffe105a36707dd9390d11654ea8f7ba
+    - run: reviewdog -version
+    - run: sbt Test/compile
